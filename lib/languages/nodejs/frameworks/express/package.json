@@ -1,0 +1,27 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "description": "summarize the purpose of your service",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha dist/tests/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "your-git-repository-url"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/runtime": "^7.14.0",
+    "eslint": "^7.27.0",
+    "prettier": "^2.3.0"
+  }
+}

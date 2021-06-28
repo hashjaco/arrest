@@ -1,0 +1,74 @@
+{
+  "name": "arrest",
+  "version": "1.0.0",
+  "description": "A personalized REST API builder which includes DevOps tool options",
+  "main": "./build/bin/arrest",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "bin": {
+    "arrest": "build/bin/arrest.js"
+  },
+  "scripts": {
+    "prestart": "babel ./src --out-dir build",
+    "start": "node build/bin/arrest",
+    "lint": "./node_modules/.bin/eslint ./src src/bin",
+    "pretty": "prettier --write '**/*.{js,json}' '!node_modules/**'",
+    "postpretty": "yarn lint --fix",
+    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hashjaco/arrest.git"
+  },
+  "keywords": [
+    "cli",
+    "api",
+    "generator",
+    "builder",
+    "npm"
+  ],
+  "author": "Hashim Jacobs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hashjaco/arrest/issues"
+  },
+  "homepage": "https://github.com/hashjaco/arrest#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/node": "^7.14.2",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/register": "^7.13.16",
+    "chai": "^4.3.4",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.3",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.0",
+    "sinon-chai": "^3.7.0"
+  },
+  "dependencies": {
+    "arg": "^5.0.0",
+    "chalk": "^4.1.1",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^6.0.0",
+    "debug": "^4.3.1",
+    "esm": "^3.2.25",
+    "figlet": "^1.5.0",
+    "inquirer": "^8.1.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.5",
+    "pretty-print": "^2.0.0",
+    "react": "^17.0.2",
+    "shelljs": "^0.8.4",
+    "touch": "^3.1.0",
+    "treeify": "^1.1.0"
+  }
+}
