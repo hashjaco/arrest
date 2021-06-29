@@ -1,7 +1,8 @@
 import chalk from 'chalk';
 import treeify from 'treeify';
 import debug from 'debug';
-import * as shell from 'shelljs';
+import path from 'path';
+import shell from 'shelljs';
 
 export default class Project {
   constructor() {
@@ -28,8 +29,7 @@ export default class Project {
   }
 
   setProperties(props) {
-    if (!Object.keys(props).length)
-      console.log('Props did not come through to set');
+    if (!Object.keys(props).length) console.log('Props did not come through to set');
     try {
       Object.keys(props).forEach((prop) => {
         if (prop in this.state) {
@@ -58,11 +58,12 @@ export default class Project {
 
   build() {
     try {
-      let currentDirectory = process.cwd();
+      const frameworkTemplate = path.join(__dirname, 'lib', this.state.language, this.state.framework);
+
       shell.mkdir(this.state.projectName);
       // TODO: figure out why shelljs member function 'cd' isn't working properly
-      shell.cd(this.state.projectName);
-      shell.exit()
+      console.log(frameworkTemplate);
+      shell.cp('-R', frameworkTemplate, this.state.projectName);
       return true;
     } catch (err) {
       debug(err);

@@ -60,13 +60,11 @@ export default class Cli {
     const projectLanguage = await this.inquirer.askForProjectLanguage();
     await this.project.setProperties(projectLanguage);
 
-
     // Specify the framework to use
-    const framework = await this.inquirer.askForProjectFramework(
+    const projectFramework = await this.inquirer.askForProjectFramework(
       projectLanguage.language
     );
-    await this.project.setProperties(framework);
-
+    await this.project.setProperties(projectFramework);
 
     // Specify testing library
     const testLibrary = await this.inquirer.askForUnitTestingLibrary(
@@ -74,10 +72,10 @@ export default class Cli {
     );
     await this.project.setProperties(testLibrary);
 
-
     // Specify the databases that you would like to use
-    const databases = await this.inquirer.askToSelectDatabases(projectLanguage.language);
-
+    const databases = await this.inquirer.askToSelectDatabases(
+      projectLanguage.language
+    );
 
     // Specify DevTools to use
     const devTools = await this.inquirer.askToSelectDevOpsTools();
@@ -85,9 +83,7 @@ export default class Cli {
     this.project.build();
 
     // Ask user if they would like to initialize their git repository
-    if(this.inquirer.askToInitializeGit()){
-
-    }
+    // if (this.inquirer.askToInitializeGit()){}
 
     // Display progress spinner
     await this.displaySpinner(

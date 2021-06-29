@@ -37,7 +37,7 @@ export default class Options {
 
   getDatabaseOptions(language) {
     try {
-      const databasePath = path.join(this.languagesPath, language, "/database")
+      const databasePath = path.join(this.languagesPath, language, '/database');
       return fs.readdirSync(databasePath);
     } catch (err) {
       debug(err);
@@ -74,7 +74,7 @@ export default class Options {
       return fs.readdirSync(testingDir);
     } catch (err) {
       debug(err);
-      return false;
+      return [];
     }
   }
 }

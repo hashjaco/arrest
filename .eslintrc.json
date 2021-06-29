@@ -26,6 +26,12 @@
     "array-bracket-spacing": ["warn", "always"],
     "import/prefer-default-export": [0],
     "new-cap": "off",
-    "class-methods-use-this": "off"
-  }
+    "class-methods-use-this": "off",
+    "no-unused-vars": "warn",
+    "space-before-blocks": "off",
+    "no-empty-function": "off",
+    "no-multiple-empty-lines": "off",
+    "implicit-arrow-linebreak": "off"
+  },
+  "ignorePatterns": ["./build/**/*.js"]
 }

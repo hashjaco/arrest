@@ -20,7 +20,7 @@ export default class Inquirer {
         name: 'framework',
         type: 'list',
         message: 'Which framework would you prefer to use?',
-        choices: [...frameworks, 'none'],
+        choices: [ ...frameworks, 'none' ],
         validate: (value) => {
           if (value.length) return true;
           return 'Please choose a framework';
@@ -56,7 +56,7 @@ export default class Inquirer {
         name: 'projectName',
         type: 'input',
         message:
-          "What's the catchiest name you can think of for your new project and git repo?",
+          'What\'s the catchiest name you can think of for your new project and git repo?',
         validate: (value) => {
           if (value.length) return true;
           return 'Please enter a name for your project';
@@ -75,7 +75,7 @@ export default class Inquirer {
         name: 'testingLibrary',
         type: 'list',
         message: 'Choose your unit-testing framework:',
-        choices: [...testing, 'none'],
+        choices: [ ...testing, 'none' ],
       },
     ];
 
@@ -89,7 +89,7 @@ export default class Inquirer {
         name: 'gitRepo',
         type: 'list',
         message: 'Would you like to initialize git now?',
-        choices: ['yes', 'no'],
+        choices: [ 'yes', 'no' ],
       },
     ];
 
@@ -103,7 +103,7 @@ export default class Inquirer {
         name: 'databases',
         type: 'checkbox',
         message: 'Select the types of databases you would like to use:',
-        choices: [...databases, 'none'],
+        choices: [ ...databases, 'none' ],
       },
     ];
 
