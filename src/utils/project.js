@@ -1,8 +1,9 @@
+import appRootPath from 'app-root-path';
+import fs from 'fs-extra';
 import chalk from 'chalk';
 import treeify from 'treeify';
 import debug from 'debug';
 import path from 'path';
-import shell from 'shelljs';
 
 export default class Project {
   constructor() {
@@ -20,6 +21,7 @@ export default class Project {
       testingLibrary: 'none',
       entities: [],
       databases: [],
+      orm: 'none',
     };
 
     this.build = this.build.bind(this);
@@ -28,21 +30,25 @@ export default class Project {
     this.displayProperties = this.displayProperties.bind(this);
   }
 
-  setProperties(props) {
-    if (!Object.keys(props).length) console.log('Props did not come through to set');
+  build() {
     try {
-      Object.keys(props).forEach((prop) => {
-        if (prop in this.state) {
-          this.state[prop] = props[prop];
-        }
-      });
+      const moduleRootPath = appRootPath.path;
+      const frameworkTemplate = path.join(
+        moduleRootPath,
+        'lib',
+        'languages',
+        this.state.language,
+        'frameworks',
+        this.state.framework
+      );
+
+      fs.mkdirsSync(this.state.projectName);
+      fs.copySync(frameworkTemplate, this.state.projectName);
+      return true;
     } catch (err) {
       debug(err);
+      return false;
     }
-  }
-
-  getProperties() {
-    return this.state;
   }
 
   displayProperties() {
@@ -56,18 +62,23 @@ export default class Project {
     }
   }
 
-  build() {
-    try {
-      const frameworkTemplate = path.join(__dirname, 'lib', this.state.language, this.state.framework);
+  getProperties() {
+    return this.state;
+  }
 
-      shell.mkdir(this.state.projectName);
-      // TODO: figure out why shelljs member function 'cd' isn't working properly
-      console.log(frameworkTemplate);
-      shell.cp('-R', frameworkTemplate, this.state.projectName);
-      return true;
+  setProperties(props) {
+    if (!Object.keys(props).length) {
+      console.log('Props did not come through to set');
+      return;
+    }
+    try {
+      Object.keys(props).forEach((prop) => {
+        if (prop in this.state) {
+          this.state[prop] = props[prop];
+        }
+      });
     } catch (err) {
       debug(err);
-      return false;
     }
   }
 }

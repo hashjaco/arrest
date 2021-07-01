@@ -1,4 +1,4 @@
-import Project from '../src/helpers/project';
+import Project from '../src/utils/project';
 import { expect } from './settings';
 
 describe('Project class methods', () => {

@@ -1,14 +1,14 @@
 import clear from 'clear';
 import chalk from 'chalk';
 import figlet from 'figlet';
-import clui from 'clui';
-import Inquirer from './helpers/inquirer';
-import Project from './helpers/project';
+import { Spinner } from 'clui';
+import Inquirer from './utils/inquirer';
+import Project from './utils/project';
 
 export default class Cli {
   constructor() {
     this.inquirer = new Inquirer();
-    this.spinner = clui.Spinner;
+    this.spinner = Spinner;
     this.project = new Project();
 
     this.displayBanner = this.displayBanner.bind(this);

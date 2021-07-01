@@ -1,6 +1,6 @@
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
-import ask from '../src/helpers/ask';
+import ask from '../src/utils/ask';
 
 chai.use(sinonChai);
 const { expect } = chai;

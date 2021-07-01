@@ -1,4 +1,4 @@
-import Options from '../src/helpers/options';
+import Options from '../src/utils/options';
 import { expect } from './settings';
 
 describe('Options class methods', () => {
